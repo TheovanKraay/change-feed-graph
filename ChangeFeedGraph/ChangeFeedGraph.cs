@@ -38,6 +38,10 @@ namespace ChangeFeedFunctions
             // Iterate through modified documents from change feed.
             foreach (var doc in documents)
             {
+
+                //client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(TargetGraphDB, TargetGraph, doc.Id), doc,
+                //new RequestOptions { PartitionKey = new PartitionKey("pk") });
+
                 // Convert documents to json.
                 string json = JsonConvert.SerializeObject(doc);
                 var serialisedjson = JsonConvert.DeserializeObject<RootObject>(json);
@@ -59,8 +63,7 @@ namespace ChangeFeedFunctions
                     client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(TargetGraphDB, TargetGraph, doc.Id), 
                         new RequestOptions { PartitionKey = new PartitionKey("pk") });
                 }
-                //client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(TargetGraphDB, TargetGraph, doc.Id), doc,
-                //new RequestOptions { PartitionKey = new PartitionKey("pk") });
+
                 System.Diagnostics.Debug.WriteLine("document to send notification  for: " + doc);
             }
         }

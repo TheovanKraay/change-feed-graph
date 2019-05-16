@@ -33,7 +33,7 @@ namespace ChangeFeedFunctions
                 string json = JsonConvert.SerializeObject(doc);
 
                 // Use Event Hub client to send the change events to event hub.
-                System.Diagnostics.Debug.WriteLine("document to send notification for: " + doc);
+                System.Diagnostics.Debug.WriteLine("document to send notification  for: " + doc);
             }
         }
     }
